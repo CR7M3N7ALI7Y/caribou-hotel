@@ -57,105 +57,124 @@
         .breadcrumbs a:hover { opacity: 0.7; }
         .breadcrumbs span { color: var(--gold); }
 
-        /* Секция контента */
-        .page-content-section {
-            padding: 60px 0 80px;
-            background-color: #f9f9f9;
-        }
+        /* =========================================================
+   СТИЛИ ДЛЯ СТРАНИЦЫ КОНКУРСОВ (competitions.php)
+   ========================================================= */
 
-        .content-block {
-            background: #ffffff;
-            padding: 50px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
-            border-radius: 4px;
-        }
-
-        .text-content h2 {
-            font-size: 28px;
-            color: var(--dark-blue);
+        /* Блок с годом */
+        .tender-year-block {
+            margin-top: 24px;
             margin-bottom: 20px;
+        }
+
+        .tender-year {
+            background-color: #e2e2e2; /* Цвет схожий со старым синим блоком, но мягче */
+            color: #353535;
+            font-size: 20px;
+            font-weight: 700;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 4px;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        /* Отдельный тендер */
+        .tender-item {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        /* Дата слева */
+        .tender-date {
+            flex: 0 0 120px;
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 16px;
+            padding-top: 2px;
+        }
+
+        /* Контент справа */
+        .tender-content {
+            flex: 1 1 300px;
+        }
+
+        .tender-title {
+            font-size: 18px;
+            color: var(--dark-blue);
+            margin-bottom: 10px;
             font-weight: 600;
         }
-        .text-content p {
-            font-size: 16px;
-            line-height: 1.8;
+
+        .tender-desc {
+            font-size: 15px;
+            line-height: 1.7;
             color: #555;
-            margin-bottom: 15px;
-        }
-        .text-content a { color: var(--gold); font-weight: 600; }
-        .text-content a:hover { text-decoration: underline; }
-
-        .divider {
-            border: 0; height: 1px; background: #eee; margin: 30px 0;
+            margin-bottom: 20px;
         }
 
-        .document-item h3 {
-            font-size: 20px; color: #333; margin-bottom: 5px;
-        }
-        .document-item .doc-meta { color: #888; font-size: 14px; margin-bottom: 15px; }
-
-        .doc-pagination { font-size: 15px; }
-        .doc-nav { color: #333; margin: 0 3px; }
-        .doc-nav.active { color: var(--gold); font-weight: 600; cursor: default; }
-        .doc-nav:hover:not(.active) { color: var(--gold); }
-
-        .disclaimer { font-style: italic; color: #777; font-size: 14px; margin-top: 10px; }
-
-
-        /* =========================================================
-        АДАПТИВНОСТЬ (ПК, Планшеты, Телефоны 320px)
-        ========================================================= */
-
-        @media (max-width: 1024px) {
-            .features-grid { grid-template-columns: repeat(2, 1fr); height: auto; }
-            .feature-item { height: 300px; }
-            .footer-info, .footer-image { width: 100%; clip-path: none; }
-            .footer-image { height: 300px; margin-top: 30px; }
-            .footer-info { padding: 0 30px; }
+        /* Список файлов для скачивания */
+        .tender-files {
+            background: #f8f9fa;
+            border-radius: 6px;
+            padding: 10px 20px;
+            border: 1px solid #eee;
         }
 
-        @media (max-width: 768px) {
-            .site-header { padding: 10px 15px; flex-direction: column; gap: 10px; background: rgba(0,0,0,0.7); }
-            .main-nav { gap: 8px; width: 100%; justify-content: center; }
-            .main-nav a { font-size: 10px; letter-spacing: 0.5px; }
-            .header-actions { width: 100%; justify-content: center; gap: 10px; flex-wrap: wrap; }
-            
-            .hero-title { font-size: 40px; letter-spacing: 4px; }
-            .hero-subtitle { font-size: 14px; letter-spacing: 4px; margin-top: 0; }
-            .scroll-hint { display: none; }
-            .features-grid { grid-template-columns: 1fr; }
-            .feature-item { height: 250px; }
-
-            /* Адаптация для promo.php на планшетах и телефонах */
-            .page-hero { height: 250px; }
-            .page-title { font-size: 32px; }
-            .content-block { padding: 30px; }
-            .text-content h2 { font-size: 24px; }
+        .file-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .file-row:last-child {
+            border-bottom: none;
         }
 
-        /* СПЕЦИАЛЬНО ДЛЯ 320px (КАК НА ВАШЕМ СКРИНШОТЕ) */
-        @media (max-width: 400px) {
-            .main-nav a { font-size: 9px; gap: 4px; } /* Уменьшаем шрифт меню */
-            
-            .logo { font-size: 16px; }
-            .logo-text small { font-size: 8px; }
-            .logo-icon { font-size: 22px; }
-
-            .btn-reservation { font-size: 10px; padding: 6px 12px; }
-            .hero-title { font-size: 28px; }
-            .hero-subtitle { font-size: 11px; }
-
-            /* Адаптация promo.php для экранов 320px */
-            .page-hero { height: 200px; } /* Уменьшаем шапку страницы еще сильнее */
-            .page-title { font-size: 24px; letter-spacing: 3px; }
-            .content-block { padding: 15px 15px 25px; } /* Убираем отступы по бокам, чтобы текст не прилипал к краям */
-            .text-content h2 { font-size: 20px; }
-            .text-content p { font-size: 14px; }
+        .file-name {
+            font-size: 14px;
+            color: #444;
         }
 
-        @media (max-width: 350px) {
-            .header-actions { flex-direction: column; gap: 5px; }
-            .btn-reservation { width: 100%; text-align: center; }
+        .file-download {
+            color: var(--gold);
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: var(--transition);
+            padding: 5px 15px;
+            border: 1px solid var(--gold);
+            border-radius: 20px;
+        }
+        .file-download:hover {
+            background-color: var(--gold);
+            color: #fff;
+        }
+
+        /* Адаптивность для маленьких экранов */
+        @media (max-width: 600px) {
+            .tender-item {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .tender-date {
+                flex: none;
+                width: 100%;
+                margin-bottom: 5px;
+            }
+            .file-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            .file-download {
+                width: 100%;
+                text-align: center;
+                padding: 8px;
+            }
         }
     </style>
     <?php include 'includes/header.php'; ?>
@@ -175,14 +194,6 @@
     <section class="page-content-section">
         <div class="container">
             <div class="content-block">
-                
-                <div class="text-content intro-header">
-                    <p class="pre-title">Закупки</p>
-                    <h2>Открытые конкурсы и тендеры</h2>
-                    <p>На этой странице публикуется информация о проведении открытых конкурсов, аукционов и запросов предложений в соответствии с законодательством Российской Федерации.</p>
-                </div>
-
-                <hr class="divider">
 
                 <!-- Список конкурсов -->
                 <div class="tenders-list">
@@ -202,23 +213,23 @@
                                 <div class="tender-files">
                                     <div class="file-row">
                                         <span class="file-name">Извещение о проведении открытого конкурса</span>
-                                        <a href="#" class="file-download">Скачать</a>
+                                        <a href="download/Конкурсы/Извещение о проведении открытого конкурска.pdf" download="Извещение о проведении открытого конкурска.pdf" class="file-download">Скачать</a>
                                     </div>
                                     <div class="file-row">
                                         <span class="file-name">Конкурсная документация</span>
-                                        <a href="#" class="file-download">Скачать</a>
+                                        <a href="download/Конкурсы/Конкурсная документация.rtf" download="download/Конкурсы/Конкурсная документация.rtf" class="file-download">Скачать</a>
                                     </div>
                                     <div class="file-row">
                                         <span class="file-name">Приложение 1 к конкурсной документации</span>
-                                        <a href="#" class="file-download">Скачать</a>
+                                        <a href="download/Конкурсы/Приложение 1 к конкурсной документации.rtf" download="Приложение 1 к конкурсной документации.rtf" class="file-download">Скачать</a>
                                     </div>
                                     <div class="file-row">
                                         <span class="file-name">Приложение 2 к конкурсной документации</span>
-                                        <a href="#" class="file-download">Скачать</a>
+                                        <a href="download/Конкурсы/Приложение 2 к конкурсной документации.rtf" download="Приложение 2 к конкурсной документации.rtf" class="file-download">Скачать</a>
                                     </div>
                                     <div class="file-row">
                                         <span class="file-name">Приложение 3 к конкурсной документации</span>
-                                        <a href="#" class="file-download">Скачать</a>
+                                        <a href="download/Конкурсы/Приложение 3 к конкурсной документации.rtf" download="Приложение 3 к конкурсной документации.rtf" class="file-download">Скачать</a>
                                     </div>
                                 </div>
                             </div>

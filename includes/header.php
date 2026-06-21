@@ -21,10 +21,10 @@
             <a href="about.php">Информация</a> <span style="color: white">/</span>
             <a href="promo.php">Конкурсы</a> <span style="color: white">/</span>
             <a href="rooms.php">Номера</a> <span style="color: white">/</span>
-            <a href="booking.php">Ресторан</a> <span style="color: white">/</span>
-            <a href="#">Спа-Салон</a> <span style="color: white">/</span>
-            <a href="#">Конференц-Зал</a> <span style="color: white">/</span>
-            <a href="#">Контакты</a> <span style="color: white">/</span>
+            <a href="restaurant.php">Ресторан</a> <span style="color: white">/</span>
+            <a href="spa.php">Спа-Салон</a> <span style="color: white">/</span>
+            <a href="conference.php">Конференц-Зал</a> <span style="color: white">/</span>
+            <a href="contact.php">Контакты</a> <span style="color: white">/</span>
         </nav>
 
         <!-- Кнопка и язык -->

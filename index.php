@@ -24,26 +24,25 @@
                 <h3>Номера</h3>
                 <div class="icon-circle">🛏</div>
             </div>
-        </div>
         </a>
-        <div class="feature-item" style="background-image: url('img/Ресторан.webp');">
+        <a href="restaurant.php" class="feature-item" style="background-image: url('img/Ресторан.webp');">
             <div class="overlay">
                 <h3>Ресторан</h3>
                 <div class="icon-circle">📍</div>
             </div>
-        </div>
-        <div class="feature-item" style="background-image: url('img/спасалон.jpeg');">
+        </a>
+        <a href="spa.php" class="feature-item" style="background-image: url('img/спасалон.jpeg');">
             <div class="overlay">
                 <h3>Спа-Салон</h3>
                 <div class="icon-circle">🛀</div>
             </div>
-        </div>
-        <div class="feature-item" style="background-image: url('img/конференцзал.jpeg');">
+        </a>
+        <a href="conference.php" class="feature-item" style="background-image: url('img/конференцзал.jpeg');">
             <div class="overlay">
                 <h3>Конференц-Зал</h3>
                 <div class="icon-circle">💬</div>
             </div>
-        </div>
+        </a>
     </section>
 
     <!-- 3. ФУТЕР -->
@@ -57,7 +56,7 @@
                     г. Белоярский, Микрорайон 4А, 1<br>
                     Ханты-Мансийский автономный округ — Югра, 628162
                 </p>
-                <a href="booking.php" class="btn-contact">Контакты</a>
+                <a href="contact.php" class="btn-contact">Контакты</a>
                 <p class="email">Email : reception@caribou-hotel.ru</p>
                 <p class="copyright">© 2026 "Карибу"</p>
             </div>

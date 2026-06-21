@@ -354,7 +354,153 @@
             background-color: gray;
             transform: translateY(-2px);
         }
+        /* =========================================================
+        СТИЛИ ДЛЯ ФОРМЫ БРОНИРОВАНИЯ (booking.php)
+        ========================================================= */
 
+        /* Специальное окно для формы (чуть шире) */
+        .modal-form-window {
+            max-width: 650px;
+        }
+
+        .modal-form-content {
+            padding: 40px;
+        }
+
+        .modal-form-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            color: var(--dark-blue);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        /* Сетка формы */
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #444;
+        }
+        .form-group .required { color: #d9534f; }
+
+        /* Инпуты и Текстареа */
+        .booking-form input[type="text"],
+        .booking-form input[type="tel"],
+        .booking-form input[type="email"],
+        .booking-form input[type="date"],
+        .booking-form select,
+        .booking-form textarea {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 4px;
+            font-size: 14px;
+            font-family: inherit;
+            color: #333;
+            background: #fafafa;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .booking-form input:focus,
+        .booking-form select:focus,
+        .booking-form textarea:focus {
+            border-color: var(--gold);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(200, 164, 83, 0.15);
+        }
+
+        /* Две колонки (ФИО и Телефон) */
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Даты заезда/выезда */
+        .form-row-dates {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Счетчики (номера и взрослые) */
+        .form-row-counters {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        /* Капча */
+        .form-captcha-block {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding-top: 10px;
+        }
+        .captcha-left {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .captcha-img-box {
+            border: 1px solid #ddd;
+            padding: 5px;
+            background: #fff;
+            border-radius: 4px;
+        }
+        .captcha-right {
+            flex-grow: 1;
+        }
+
+        /* Кнопка отправки */
+        .form-submit-row {
+            margin-top: 15px;
+            text-align: center;
+        }
+        .btn-submit-form {
+            background-color: var(--gold);
+            color: #fff;
+            border: none;
+            padding: 14px 40px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+        }
+        .btn-submit-form:hover {
+            background-color: gray;
+            transform: translateY(-2px);
+        }
+
+        /* Адаптация формы на телефонах */
+        @media (max-width: 600px) {
+            .modal-form-content { padding: 20px; }
+            .form-row, .form-row-dates, .form-row-counters {
+                grid-template-columns: 1fr;
+            }
+            .form-captcha-block {
+                flex-direction: column;
+                align-items: stretch;
+            }
+        }
         /* Легкие анимации открытия */
         @keyframes fadeInModal {
             from { opacity: 0; }
@@ -418,362 +564,809 @@
         <div class="container">
             <div class="content-block">
                 <div class="rooms-grid">
-                    <!-- Карточка 1: Одноместный номер первой категории -->
-                    <div class="room-card" onclick="openModal('modal-1')">
+                    <!-- ========================================= -->
+                    <!-- Карточка 1: Одноместный номер первой категории                      -->
+                    <!-- ========================================= -->
+                    <div class="room-card" onclick="openModal('modal-desc-1')">
                         <div class="room-card-img">
-                            <img src="img/Номера/Одноместный номер первой категории\1 (1).jpg" alt="Стандарт">
+                            <img src="img/Номера/Одноместный номер первой категории/1 (1).jpg" alt="Стандарт">
                         </div>
                         <div class="room-card-content">
                             <h3 class="room-card-title">Одноместный номер первой категории</h3>
-                            <p class="room-card-desc">Уютные однокомнатные номера в классическом стиле с большой двуспальной кроватью.</p>
+                            <p class="room-card-desc">Однокомнатный номер с одной односпальной кроватью.</p>
+
                             <div class="room-card-bottom">
-                                <div class="room-card-price">4200.00 руб./сут.</div>
-                                <a class="btn-reserve-card">ПОДРОБНЕЕ</a>
-                                <a href="#" class="btn-reserve-room">ЗАБРОНИРОВАТЬ</a>
+                                <div class="room-card-price">4200.00 руб. / сутки</div>
+                                <button class="btn-reserve-card" onclick="event.stopPropagation(); openModal('modal-book-1')">ЗАБРОНИРОВАТЬ</button>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Карточка 2: Двухместный номер первой категории -->
-                    <div class="room-card" onclick="openModal('modal-2')">
+                    <!-- ========================================= -->
+                    <!-- Карточка 2: Двухместный номер первой категории                      -->
+                    <!-- ========================================= -->
+                    <div class="room-card" onclick="openModal('modal-desc-2')">
                         <div class="room-card-img">
-                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop" alt="Премиум">
+                            <img src="img/Номера/Двухместный номер первой категории/2.jpg" alt="Стандарт">
                         </div>
                         <div class="room-card-content">
                             <h3 class="room-card-title">Двухместный номер первой категории</h3>
-                            <p class="room-card-desc">Комфортный номер с двумя раздельными либо 1 большой кроватью. Идеален для группового заезда.</p>
+                            <p class="room-card-desc">Двухместный номер с двумя односпальными кроватями.</p>
+
                             <div class="room-card-bottom">
-                                <div class="room-card-price">4200.00 руб./сут.</div>
-                                <a class="btn-reserve-card">ПОДРОБНЕЕ</a>
+                                <div class="room-card-price">4200.00 руб. / сутки</div>
+                                <button class="btn-reserve-card" onclick="event.stopPropagation(); openModal('modal-book-2')">ЗАБРОНИРОВАТЬ</button>
                             </div>
                         </div>
                     </div>
-                    <!-- Карточка 3: Двухместный номер первой категории. Премиум. -->
-                    <div class="room-card" onclick="openModal('modal-3')">
+                    <!-- ========================================= -->
+                    <!-- Карточка 3: Двухместный номер первой категории                      -->
+                    <!-- ========================================= -->
+                    <div class="room-card" onclick="openModal('modal-desc-3')">
                         <div class="room-card-img">
-                            <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800&auto=format&fit=crop" alt="Стандарт">
+                            <img src="img/Номера/Двухместный номер первой категории. Премиум/1 (1).jpg" alt="Стандарт">
                         </div>
                         <div class="room-card-content">
                             <h3 class="room-card-title">Двухместный номер первой категории. Премиум.</h3>
-                            <p class="room-card-desc">Уютные однокомнатные номера в классическом стиле с большой двуспальной кроватью.</p>
+                            <p class="room-card-desc">Двухместный номер с одной двуспальной кроватью.</p>
+
                             <div class="room-card-bottom">
-                                <div class="room-card-price">5600.00 руб./сут.</div>
-                                <a class="btn-reserve-card">ПОДРОБНЕЕ</a>
+                                <div class="room-card-price">5600.00 руб. / сутки</div>
+                                <button class="btn-reserve-card" onclick="event.stopPropagation(); openModal('modal-book-3')">ЗАБРОНИРОВАТЬ</button>
                             </div>
                         </div>
                     </div>
-                    <!-- Карточка 4: Трехместный номер первой категории -->
-                    <div class="room-card" onclick="openModal('modal-4')">
+                    <!-- ========================================= -->
+                    <!-- Карточка 4: Двухместный номер первой категории                      -->
+                    <!-- ========================================= -->
+                    <div class="room-card" onclick="openModal('modal-desc-4')">
                         <div class="room-card-img">
-                            <img src="https://images.unsplash.com/photo-1582719478250-c89dae6c2c4d?q=80&w=800&auto=format&fit=crop" alt="Люкс">
+                            <img src="img/Номера/Трехместный номер первой категории/146_image.jpg" alt="Стандарт">
                         </div>
                         <div class="room-card-content">
                             <h3 class="room-card-title">Трехместный номер первой категории</h3>
-                            <p class="room-card-desc">Просторный номер класса Люкс с гостиной зоной, панорамными окнами и премиальным сервисом.</p>
+                            <p class="room-card-desc">Двухместный номер с двумя раздельными кроватями + койко-место с подселением</p>
+
                             <div class="room-card-bottom">
-                                <div class="room-card-price">4200.00 руб./сут.</div>
-                                <a class="btn-reserve-card">ПОДРОБНЕЕ</a>
+                                <div class="room-card-price">4200.00 руб. / сутки</div>
+                                <button class="btn-reserve-card" onclick="event.stopPropagation(); openModal('modal-book-4')">ЗАБРОНИРОВАТЬ</button>
                             </div>
                         </div>
                     </div>
-                    <!-- Карточка 5: Студия -->
-                    <div class="room-card" onclick="openModal('modal-5')">
+                    <!-- ========================================= -->
+                    <!-- Карточка 5: Студия                      -->
+                    <!-- ========================================= -->
+                    <div class="room-card" onclick="openModal('modal-desc-5')">
                         <div class="room-card-img">
-                            <img src="https://images.unsplash.com/photo-1582719478250-c89dae6c2c4d?q=80&w=800&auto=format&fit=crop" alt="Люкс">
+                            <img src="img/Номера/Студия/1.jpg" alt="Стандарт">
                         </div>
                         <div class="room-card-content">
                             <h3 class="room-card-title">Студия</h3>
-                            <p class="room-card-desc">Просторный номер класса Люкс с гостиной зоной, панорамными окнами и премиальным сервисом.</p>
+                            <p class="room-card-desc">Двухместный номер повышеной комфортности с одной двуспальной кроватью.</p>
+
                             <div class="room-card-bottom">
-                                <div class="room-card-price">7500.00 руб./сут.</div>
-                                <a class="btn-reserve-card">ПОДРОБНЕЕ</a>
+                                <div class="room-card-price">7500.00 руб. / сутки</div>
+                                <button class="btn-reserve-card" onclick="event.stopPropagation(); openModal('modal-book-5')">ЗАБРОНИРОВАТЬ</button>
                             </div>
                         </div>
                     </div>
-                    <!-- Карточка 6: Cвадебный номер. Cтудия -->
-                    <div class="room-card" onclick="openModal('modal-6')">
+                    <!-- =========================================
+                    Карточка 6: Cвадебный номер. Cтудия                     -->
+                    <!-- ========================================= -->
+                    <div class="room-card" onclick="openModal('modal-desc-6')">
                         <div class="room-card-img">
-                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop" alt="Премиум">
+                            <img src="img/Номера/Cвадебный номер. Cтудия/1.jpg" alt="Стандарт">
                         </div>
                         <div class="room-card-content">
                             <h3 class="room-card-title">Cвадебный номер. Cтудия</h3>
-                            <p class="room-card-desc">Комфортный номер с двумя раздельными либо 1 большой кроватью. Идеален для группового заезда.</p>
+                            <p class="room-card-desc">Двухместный номер повышеной комфортности с одной двуспальной кроватью.</p>
+
                             <div class="room-card-bottom">
-                                <div class="room-card-price">7500.00 руб./сут.</div>
-                                <a class="btn-reserve-card">ПОДРОБНЕЕ</a>
+                                <div class="room-card-price">7500.00 руб. / сутки</div>
+                                <button class="btn-reserve-card" onclick="event.stopPropagation(); openModal('modal-book-6')">ЗАБРОНИРОВАТЬ</button>
                             </div>
                         </div>
-                    </div>
-        
-
-                    <!-- Карточка 7: Люкс -->
-                    <div class="room-card" onclick="openModal('modal-7')">
+                    </div> 
+                    <!-- ========================================= -->
+                    <!-- Карточка 7: Люкс                      -->
+                    <!-- ========================================= -->
+                    <div class="room-card" onclick="openModal('modal-desc-7')">
                         <div class="room-card-img">
-                            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop" alt="Премиум">
+                            <img src="img/Номера/Люкс/1.jpg" alt="Стандарт">
                         </div>
                         <div class="room-card-content">
                             <h3 class="room-card-title">Люкс</h3>
-                            <p class="room-card-desc">Комфортный номер с двумя раздельными либо 1 большой кроватью. Идеален для группового заезда.</p>
+                            <p class="room-card-desc">Двухместный двухкомнатный номер повышеной комфортности с одной двуспальной кроватью.</p>
+
                             <div class="room-card-bottom">
-                                <div class="room-card-price">8100.00 руб./сут.</div>
-                                <a class="btn-reserve-card">ПОДРОБНЕЕ</a>
+                                <div class="room-card-price">8100.00 руб. / сутки</div>
+                                <button class="btn-reserve-card" onclick="event.stopPropagation(); openModal('modal-book-7')">ЗАБРОНИРОВАТЬ</button>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Карточка 8: Люкс+ -->
-                    <div class="room-card" onclick="openModal('modal-8')">
+                    <!-- ========================================= -->
+                    <!-- Карточка 8: Люкс +                      -->
+                    <!-- ========================================= -->
+                    <div class="room-card" onclick="openModal('modal-desc-8')">
                         <div class="room-card-img">
-                            <img src="https://images.unsplash.com/photo-1582719478250-c89dae6c2c4d?q=80&w=800&auto=format&fit=crop" alt="Люкс">
+                            <img src="img/Номера/Люкс+/1 (1).jpg" alt="Стандарт">
                         </div>
                         <div class="room-card-content">
-                            <h3 class="room-card-title">Люкс+</h3>
-                            <p class="room-card-desc">Просторный номер класса Люкс с гостиной зоной, панорамными окнами и премиальным сервисом.</p>
+                            <h3 class="room-card-title">Люкс +</h3>
+                            <p class="room-card-desc">Двухместный двухкомнатный номер повышеной комфортности с одной двуспальной кроватью.</p>
+
                             <div class="room-card-bottom">
-                                <div class="room-card-price">8600.00 руб./сут.</div>
-                                <a class="btn-reserve-card">ПОДРОБНЕЕ</a>
+                                <div class="room-card-price">8600.00 руб. / сутки</div>
+                                <button class="btn-reserve-card" onclick="event.stopPropagation(); openModal('modal-book-8')">ЗАБРОНИРОВАТЬ</button>
                             </div>
                         </div>
                     </div>
-    
-
-
                 </div>
             </div>
         </div>
     </section>
 </main>
 
-<!-- =============================================== -->
-<!-- МОДАЛЬНЫЕ ОКНА (Всплывающие окна с деталями) -->
-<!-- =============================================== -->
+<!-- =========================================================== -->
+<!-- МОДАЛЬНЫЕ ОКНА (ОПИСАНИЯ НОМЕРОВ)                           -->
+<!-- =========================================================== -->
 
-<!-- Окно 1: Одноместный номер первой категории -->
-<div id="modal-1" class="modal-overlay" onclick="closeModalOutside(event)">
+<div id="modal-desc-1" class="modal-overlay" onclick="closeModalOutside(event)">
     <div class="modal-window">
-        <span class="modal-close" onclick="closeModal('modal-1')">×</span>
+        <span class="modal-close" onclick="closeModal('modal-desc-1')">×</span>
         <div class="modal-content">
             <div class="modal-gallery">
-                <img src="img/Номера/Одноместный номер первой категории\1 (1).jpg" class="modal-main-img" alt="Фото номера">
+                <img src="img/Номера/Одноместный номер первой категории/1 (1).jpg" class="modal-main-img">
                 <div class="modal-thumbs">
-                    <img src="img/Номера/Одноместный номер первой категории\1 (1).jpg" onclick="changeModalImg(this, 'modal-1')">
-                    <img src="img/Номера/Одноместный номер первой категории\2.jpg" onclick="changeModalImg(this, 'modal-1')">
-                    <img src="img/Номера/Одноместный номер первой категории\3.jpg" onclick="changeModalImg(this, 'modal-1')">
+                    <img src="img/Номера/Одноместный номер первой категории/1 (1).jpg" onclick="changeModalImg(this, 'modal-desc-1')">
+                    <img src="img/Номера/Одноместный номер первой категории/2.jpg" onclick="changeModalImg(this, 'modal-desc-1')">
+                    <img src="img/Номера/Одноместный номер первой категории/3.jpg" onclick="changeModalImg(this, 'modal-desc-1')">
                 </div>
             </div>
             <div class="modal-info">
                 <h2>Одноместный номер первой категории</h2>
                 <p class="modal-desc">Практичный и комфортабельный номер для одного гостя, выполненный в строгом, деловом стиле. В номере есть всё необходимое для комфортного проживания и работы: односпальная кровать, просторный письменный стол, кресло для отдыха и телевизор. Большое окно с плотными шторами гарантирует тишину и спокойный сон.</p>
                 <div class="modal-bottom">
-                    <div class="modal-price">4200.00 руб. <span>/ сутки</span></div>
+                    <div class="modal-price">4200.00 руб.<span>/ сутки</span></div>
+                    <button class="btn-reserve-room" onclick="closeModal('modal-desc-1'); openModal('modal-book-1')">ЗАБРОНИРОВАТЬ</button>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+<div id="modal-desc-2" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window">
+        <span class="modal-close" onclick="closeModal('modal-desc-2')">×</span>
+        <div class="modal-content">
+            <div class="modal-gallery">
+                <img src="img/Номера/Двухместный номер первой категории/2.jpg" class="modal-main-img">
+                <div class="modal-thumbs">
+                    <img src="img/Номера/Двухместный номер первой категории/2.jpg" onclick="changeModalImg(this, 'modal-desc-2')">
+                    <img src="img/Номера/Двухместный номер первой категории/3.jpg" onclick="changeModalImg(this, 'modal-desc-2')">
+                    <img src="img/Номера/Двухместный номер первой категории/5.jpg" onclick="changeModalImg(this, 'modal-desc-2')">
+                </div>
+            </div>
+            <div class="modal-info">
+                <h2>Двухместный номер первой категории</h2>
+                <p class="modal-desc">Просторный и функциональный номер, оснащенный двумя удобными односпальными кроватями. Идеальный выбор для комфортного размещения двоих гостей. В номере предусмотрена просторная рабочая зона с письменным столом, современный телевизор, а также уютная зона отдыха с кожаным креслом и журнальным столиком. Классический интерьер в спокойных тонах создает атмосферу для полноценного отдыха и продуктивной работы.</p>
+                <div class="modal-bottom">
+                    <div class="modal-price">4200.00 руб.<span>/ сутки</span></div>
+                    <button class="btn-reserve-room" onclick="closeModal('modal-desc-2'); openModal('modal-book-2')">ЗАБРОНИРОВАТЬ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-desc-3" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window">
+        <span class="modal-close" onclick="closeModal('modal-desc-3')">×</span>
+        <div class="modal-content">
+            <div class="modal-gallery">
+                <img src="img/Номера/Двухместный номер первой категории. Премиум/1 (1).jpg" class="modal-main-img">
+                <div class="modal-thumbs">
+                    <img src="img/Номера/Двухместный номер первой категории. Премиум/1 (1).jpg" onclick="changeModalImg(this, 'modal-desc-3')">
+                    <img src="img/Номера/Двухместный номер первой категории. Премиум/2.jpg" onclick="changeModalImg(this, 'modal-desc-3')">
+                    <img src="img/Номера/Двухместный номер первой категории. Премиум/3.jpg" onclick="changeModalImg(this, 'modal-desc-3')">
+                </div>
+            </div>
+            <div class="modal-info">
+                <h2>Двухместный номер первой категории. Премиум.</h2>
+                <p class="modal-desc">Просторный номер с большой двуспальной кроватью и эргономичной планировкой. Интерьер выполнен в спокойных, теплых бежевых и коричневых тонах с акцентной деревянной стеной. В вашем распоряжении: комфортное кожаное кресло и журнальный столик для отдыха, функциональный рабочий стол, вместительный шкаф-купе для вещей и большой телевизор. Продуманный свет и качественная мебель сделают ваше пребывание максимально приятным.</p>
+                <p>Стоимость:</p>
+                <p>1 местное размещение - 5600.00 руб. / сутки.</p>
+                <p>2х местное размещение - 7800.00 руб. / сутки. </p>
+                <p>Завтрак включен.</p>
+                <div class="modal-bottom">
+                    <div class="modal-price">5600.00 руб.<span>/ сутки</span></div>
+                    <button class="btn-reserve-room" onclick="closeModal('modal-desc-3'); openModal('modal-book-3')">ЗАБРОНИРОВАТЬ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-desc-4" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window">
+        <span class="modal-close" onclick="closeModal('modal-desc-4')">×</span>
+        <div class="modal-content">
+            <div class="modal-gallery">
+                <img src="img/Номера/Трехместный номер первой категории/146_image.jpg" class="modal-main-img">
+                <div class="modal-thumbs">
+                    <img src="img/Номера/Трехместный номер первой категории/146_image.jpg" onclick="changeModalImg(this, 'modal-desc-4')">
+                </div>
+            </div>
+            <div class="modal-info">
+                <h2>Трехместный номер первой категории</h2>
+                <p class="modal-desc">Практичный и комфортный номер, оснащенный двумя раздельными односпальными кроватями. Идеальное решение для размещения двух гостей, которые ценят личное пространство и комфорт. Интерьер выполнен в спокойных, светлых тонах с акцентной деревянной стеной, создающей уютную атмосферу. Номер оборудован рабочей зоной, телевизором, удобным кожаным креслом.</p>
+                <p>Стоимость:</p>
+                <p>1 местное размещение - 4200.00 руб. / сутки.</p>
+                <p>койко-место с подселением - 3600.00 руб. / сутки. </p>
+                <p>Завтрак включен.</p>
+                <div class="modal-bottom">
+                    <div class="modal-price">4200.00 руб.<span>/ сутки</span></div>
+                    <button class="btn-reserve-room" onclick="closeModal('modal-desc-4'); openModal('modal-book-4')">ЗАБРОНИРОВАТЬ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-desc-5" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window">
+        <span class="modal-close" onclick="closeModal('modal-desc-5')">×</span>
+        <div class="modal-content">
+            <div class="modal-gallery">
+                <img src="img/Номера/Студия/1.jpg" class="modal-main-img">
+                <div class="modal-thumbs">
+                    <img src="img/Номера/Студия/1.jpg" onclick="changeModalImg(this, 'modal-desc-5')">
+                    <img src="img/Номера/Студия/2.jpg" onclick="changeModalImg(this, 'modal-desc-5')">
+                    <img src="img/Номера/Студия/8.jpg" onclick="changeModalImg(this, 'modal-desc-5')">
+                    <img src="img/Номера/Студия/3.jpg" onclick="changeModalImg(this, 'modal-desc-5')">
+                </div>
+            </div>
+            <div class="modal-info">
+                <h2>Студия</h2>
+                <p class="modal-desc">Идеальный выбор для тех, кто ценит личное пространство. Номер оснащен большой двуспальной кроватью с мягким изголовьем. Отличительная особенность номера — наличие отдельной уютной гостиной зоны с комфортабельным кожаным диваном, просторным письменным столом, большим напольным зеркалом и местом для хранения вещей. Продуманный дизайн, теплые древесные оттенки и мягкий рассеянный свет создают атмосферу домашнего уюта и располагают к качественному отдыху.</p>
+                <p>Стоимость:</p>
+                <p>1 местное размещение - 7500.00 руб. / сутки.</p>
+                <p>2х местное размещение - 8800.00 руб. / сутки. </p>
+                <p>Завтрак включен.</p>
+                <div class="modal-bottom">
+                    <div class="modal-price">7500.00 руб.<span>/ сутки</span></div>
+                    <button class="btn-reserve-room" onclick="closeModal('modal-desc-5'); openModal('modal-book-5')">ЗАБРОНИРОВАТЬ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-desc-6" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window">
+        <span class="modal-close" onclick="closeModal('modal-desc-6')">×</span>
+        <div class="modal-content">
+            <div class="modal-gallery">
+                <img src="img/Номера/Cвадебный номер. Cтудия/1.jpg" class="modal-main-img">
+                <div class="modal-thumbs">
+                    <img src="img/Номера/Cвадебный номер. Cтудия/1.jpg" onclick="changeModalImg(this, 'modal-desc-6')">
+                    <img src="img/Номера/Cвадебный номер. Cтудия/2.jpg" onclick="changeModalImg(this, 'modal-desc-6')">
+                    <img src="img/Номера/Cвадебный номер. Cтудия/3.jpg" onclick="changeModalImg(this, 'modal-desc-6')">
+                    <img src="img/Номера/Cвадебный номер. Cтудия/4.jpg" onclick="changeModalImg(this, 'modal-desc-6')">
+                    <img src="img/Номера/Cвадебный номер. Cтудия/5.jpg" onclick="changeModalImg(this, 'modal-desc-6')">
+                    <img src="img/Номера/Cвадебный номер. Cтудия/7.jpg" onclick="changeModalImg(this, 'modal-desc-6')">
+                </div>
+            </div>
+            <div class="modal-info">
+                <h2>Cвадебный номер. Cтудия</h2>
+                <p class="modal-desc">Изысканный и воздушный номер, созданный специально для самых важных и романтичных моментов в жизни. Абсолютно белый интерьер, наполненный мягким естественным светом, подчеркивает чистоту, нежность и торжественность события. В номере вас ждет роскошная кровать с изысканным покрывалом, уютная зона отдыха с двумя креслами, большие зеркала и стильные дизайнерские светильники.</p>
+                <p>Стоимость:</p>
+                <p>1 местное размещение - 7500.00 руб / сутки.</p>
+                <p>2х местное размещение - 8800.00 руб / сутки. </p>
+                <p>Завтрак включен.</p>
+                <div class="modal-bottom">
+                    <div class="modal-price">7500.00 руб.<span>/ сутки</span></div>
+                    <button class="btn-reserve-room" onclick="closeModal('modal-desc-6'); openModal('modal-book-6')">ЗАБРОНИРОВАТЬ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-desc-7" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window">
+        <span class="modal-close" onclick="closeModal('modal-desc-7')">×</span>
+        <div class="modal-content">
+            <div class="modal-gallery">
+                <img src="img/Номера/Люкс/1.jpg" class="modal-main-img">
+                <div class="modal-thumbs">
+                    <img src="img/Номера/Люкс/1.jpg" onclick="changeModalImg(this, 'modal-desc-7')">
+                    <img src="img/Номера/Люкс/2.jpg" onclick="changeModalImg(this, 'modal-desc-7')">
+                    <img src="img/Номера/Люкс/3.jpg" onclick="changeModalImg(this, 'modal-desc-7')">
+                    <img src="img/Номера/Люкс/4.jpg" onclick="changeModalImg(this, 'modal-desc-7')">
+                    <img src="img/Номера/Люкс/8.jpg" onclick="changeModalImg(this, 'modal-desc-7')">
+                </div>
+            </div>
+            <div class="modal-info">
+                <h2>Люкс</h2>
+                <p class="modal-desc">Идеальный выбор для тех, кто ценит личное пространство и домашний уют во время путешествий. Этот уникальный номер отличается эргономичной планировкой: просторная спальня с большой кроватью и отдельная, светлая гостиная зона с кожаным диваном, креслами и телевизором. Интерьер выполнен в строгом, но уютном стиле с использованием натуральных древесных оттенков и мягкого рассеянного света. Ванная комната оборудована современной душевой кабиной, премиальной косметикой и махровыми халатами. Ощутите себя как дома.</p>
+                <p>Стоимость:</p>
+                <p>1 местное размещение - 8100.00 руб. / сутки.</p>
+                <p>2х местное размещение - 9400.00 руб. / сутки. </p>
+                <p>Завтрак включен.</p>
+                <div class="modal-bottom">
+                    <div class="modal-price">8100.00 руб.<span>/ сутки</span></div>
+                    <button class="btn-reserve-room" onclick="closeModal('modal-desc-7'); openModal('modal-book-7')">ЗАБРОНИРОВАТЬ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="modal-desc-8" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window">
+        <span class="modal-close" onclick="closeModal('modal-desc-8')">×</span>
+        <div class="modal-content">
+            <div class="modal-gallery">
+                <img src="img/Номера/Люкс+/1 (1).jpg" class="modal-main-img">
+                <div class="modal-thumbs">
+                    <img src="img/Номера/Люкс+/1 (1).jpg" onclick="changeModalImg(this, 'modal-desc-8')">
+                    <img src="img/Номера/Люкс+/3.jpg" onclick="changeModalImg(this, 'modal-desc-8')">
+                    <img src="img/Номера/Люкс+/6.jpg" onclick="changeModalImg(this, 'modal-desc-8')">
+                    <img src="img/Номера/Люкс+/8.jpg" onclick="changeModalImg(this, 'modal-desc-8')">
+                    <img src="img/Номера/Люкс+/9.jpg" onclick="changeModalImg(this, 'modal-desc-8')">
+                </div>
+            </div>
+            <div class="modal-info">
+                <h2>Люкс +</h2>
+                <p class="modal-desc">Роскошный номер с уникальной планировкой, разделенный на три функциональные зоны: кабинет, гостиная и спальня. Интерьер выполнен в светлых, строгих и элегантных тонах, создающих ощущение чистоты и простора. Спальня имеет большую кровать с мягким изголовьем и огромный шкаф-купе. Гостиная оснащена удобным диваном, а кабинет — полноценным рабочим местом с компьютером и печатной техникой. Очень просторный санузел и дополнительный гостевой туалет обеспечивают максимальный уровень комфорта. Отличный вариант для премиальных гостей и руководителей.</p>
+                <p>Стоимость:</p>
+                <p>1 местное размещение - 8100.00 руб. / сутки.</p>
+                <p>2х местное размещение - 9400.00 руб. / сутки. </p>
+                <p>Завтрак включен.</p>
+                <div class="modal-bottom">
+                    <div class="modal-price">8100.00 руб.<span>/ сутки</span></div>
+                    <button class="btn-reserve-room" onclick="closeModal('modal-desc-8'); openModal('modal-book-8')">ЗАБРОНИРОВАТЬ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =========================================================== -->
+<!-- МОДАЛЬНЫЕ ОКНА (ФОРМЫ БРОНИРОВАНИЯ)                        -->
+<!-- =========================================================== -->
+
+<!-- =========================================================== -->
+<!-- МОДАЛЬНЫЕ ОКНА (ФОРМЫ БРОНИРОВАНИЯ) - 8 ШТУК                -->
+<!-- =========================================================== -->
+
+<div id="modal-book-1" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window modal-form-window">
+        <span class="modal-close" onclick="closeModal('modal-book-1')">×</span>
+        <div class="modal-form-content">
+            <h2 class="modal-form-title">Бронирование: Одноместный номер первой категории</h2>
+            <form action="#" method="POST" class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fio">ФИО <span class="required">*</span></label>
+                        <input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (900) 000-00-00" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.ru">
+                </div>
+                <div class="form-row-dates">
+                    <div class="form-group date-group">
+                        <label>Дата заезда:</label>
+                        <input type="date" name="checkin" required>
+                    </div>
+                    <div class="form-group date-group">
+                        <label>Дата выезда:</label>
+                        <input type="date" name="checkout" required>
+                    </div>
+                </div>
+                <div class="form-row-counters">
+                    <div class="form-group counter-group">
+                        <label>Количество номеров:</label>
+                        <select name="rooms_count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                    <div class="form-group counter-group">
+                        <label>Взрослых:</label>
+                        <select name="adults"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Текстовое сообщение / Пожелания</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Напишите ваши пожелания..."></textarea>
+                </div>
+                <div class="form-submit-row">
+                    <button type="submit" class="btn-submit-form">ОТПРАВИТЬ ЗАЯВКУ</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
-<!-- Окно 2: Премиум -->
-<div id="modal-2" class="modal-overlay" onclick="closeModalOutside(event)">
-    <div class="modal-window">
-        <span class="modal-close" onclick="closeModal('modal-2')">×</span>
-        <div class="modal-content">
-            <div class="modal-gallery">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop" class="modal-main-img" alt="Фото номера">
-                <div class="modal-thumbs">
-                    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-2')">
-                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-2')">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89dae6c2c4d?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-2')">
+<div id="modal-book-2" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window modal-form-window">
+        <span class="modal-close" onclick="closeModal('modal-book-2')">×</span>
+        <div class="modal-form-content">
+            <h2 class="modal-form-title">Бронирование: Двухместный номер первой категории</h2>
+            <form action="#" method="POST" class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fio">ФИО <span class="required">*</span></label>
+                        <input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (900) 000-00-00" required>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-info">
-                <h2>Премиум номер</h2>
-                <p class="modal-desc">Комфортный номер с двумя раздельными либо одной большой кроватью. Просторное помещение идеально подходит для деловых встреч или группового заезда. Панорамные окна и улучшенная шумоизоляция.</p>
-                <div class="modal-features">
-                    <span>⬜ 30 м²</span>
-                    <span>👤 До 4 гостей</span>
-                    <span>🛏 2 кровати</span>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.ru">
                 </div>
-                <div class="modal-bottom">
-                    <div class="modal-price">5 700 ₽ <span>/ сутки</span></div>
-                    <a href="#" class="btn-reserve-room">ЗАБРОНИРОВАТЬ</a>
+                <div class="form-row-dates">
+                    <div class="form-group date-group">
+                        <label>Дата заезда:</label>
+                        <input type="date" name="checkin" required>
+                    </div>
+                    <div class="form-group date-group">
+                        <label>Дата выезда:</label>
+                        <input type="date" name="checkout" required>
+                    </div>
                 </div>
-            </div>
+                <div class="form-row-counters">
+                    <div class="form-group counter-group">
+                        <label>Количество номеров:</label>
+                        <select name="rooms_count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                    <div class="form-group counter-group">
+                        <label>Взрослых:</label>
+                        <select name="adults"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Текстовое сообщение / Пожелания</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Напишите ваши пожелания..."></textarea>
+                </div>
+                <div class="form-submit-row">
+                    <button type="submit" class="btn-submit-form">ОТПРАВИТЬ ЗАЯВКУ</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
-<!-- Окно 3: Люкс -->
-<div id="modal-3" class="modal-overlay" onclick="closeModalOutside(event)">
-    <div class="modal-window">
-        <span class="modal-close" onclick="closeModal('modal-3')">×</span>
-        <div class="modal-content">
-            <div class="modal-gallery">
-                <img src="https://images.unsplash.com/photo-1582719478250-c89dae6c2c4d?q=80&w=800&auto=format&fit=crop" class="modal-main-img" alt="Фото номера">
-                <div class="modal-thumbs">
-                    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-3')">
-                    <img src="https://images.unsplash.com/photo-1522771753033-748a2d32395c?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-3')">
-                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-3')">
+<div id="modal-book-3" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window modal-form-window">
+        <span class="modal-close" onclick="closeModal('modal-book-3')">×</span>
+        <div class="modal-form-content">
+            <h2 class="modal-form-title">Бронирование: Двухместный номер первой категории. Премиум.</h2>
+            <form action="#" method="POST" class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fio">ФИО <span class="required">*</span></label>
+                        <input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (900) 000-00-00" required>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-info">
-                <h2>Номер Люкс</h2>
-                <p class="modal-desc">Максимальный комфорт для самых взыскательных гостей. Номер состоит из спальни и гостиной зоны. В номере: премиальная косметика, халаты, тапочки, мини-бар и кофемашина.</p>
-                <div class="modal-features">
-                    <span>⬜ 45 м²</span>
-                    <span>👤 До 2 гостей</span>
-                    <span>🛏 1 большая кровать</span>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.ru">
                 </div>
-                <div class="modal-bottom">
-                    <div class="modal-price">9 500 ₽ <span>/ сутки</span></div>
-                    <a href="#" class="btn-reserve-room">ЗАБРОНИРОВАТЬ</a>
+                <div class="form-row-dates">
+                    <div class="form-group date-group">
+                        <label>Дата заезда:</label>
+                        <input type="date" name="checkin" required>
+                    </div>
+                    <div class="form-group date-group">
+                        <label>Дата выезда:</label>
+                        <input type="date" name="checkout" required>
+                    </div>
                 </div>
-            </div>
+                <div class="form-row-counters">
+                    <div class="form-group counter-group">
+                        <label>Количество номеров:</label>
+                        <select name="rooms_count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                    <div class="form-group counter-group">
+                        <label>Взрослых:</label>
+                        <select name="adults"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Текстовое сообщение / Пожелания</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Напишите ваши пожелания..."></textarea>
+                </div>
+                <div class="form-submit-row">
+                    <button type="submit" class="btn-submit-form">ОТПРАВИТЬ ЗАЯВКУ</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
-<!-- Окно 4: Студия -->
-<div id="modal-4" class="modal-overlay" onclick="closeModalOutside(event)">
-    <div class="modal-window">
-        <span class="modal-close" onclick="closeModal('modal-4')">×</span>
-        <div class="modal-content">
-            <div class="modal-gallery">
-                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=800&auto=format&fit=crop" class="modal-main-img" alt="Фото номера">
-                <div class="modal-thumbs">
-                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-4')">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89dae6c2c4d?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-4')">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-4')">
+<div id="modal-book-4" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window modal-form-window">
+        <span class="modal-close" onclick="closeModal('modal-book-4')">×</span>
+        <div class="modal-form-content">
+            <h2 class="modal-form-title">Бронирование: Трехместный номер первой категории</h2>
+            <form action="#" method="POST" class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fio">ФИО <span class="required">*</span></label>
+                        <input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (900) 000-00-00" required>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-info">
-                <h2>Номер Студия</h2>
-                <p class="modal-desc">Современный дизайн с открытой планировкой. Спальня объединена с мини-гостиной. Отлично подходит для молодежных пар и командировок. Есть рабочая зона.</p>
-                <div class="modal-features">
-                    <span>⬜ 22 м²</span>
-                    <span>👤 До 2 гостей</span>
-                    <span>🛏 1 кровать</span>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.ru">
                 </div>
-                <div class="modal-bottom">
-                    <div class="modal-price">3 900 ₽ <span>/ сутки</span></div>
-                    <a href="#" class="btn-reserve-room">ЗАБРОНИРОВАТЬ</a>
+                <div class="form-row-dates">
+                    <div class="form-group date-group">
+                        <label>Дата заезда:</label>
+                        <input type="date" name="checkin" required>
+                    </div>
+                    <div class="form-group date-group">
+                        <label>Дата выезда:</label>
+                        <input type="date" name="checkout" required>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Окно 1: Стандарт -->
-<div id="modal-5" class="modal-overlay" onclick="closeModalOutside(event)">
-    <div class="modal-window">
-        <span class="modal-close" onclick="closeModal('modal-5')">×</span>
-        <div class="modal-content">
-            <div class="modal-gallery">
-                <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=800&auto=format&fit=crop" class="modal-main-img" alt="Фото номера">
-                <div class="modal-thumbs">
-                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-5')">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89dae6c2c4d?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-5')">
-                    <img src="https://images.unsplash.com/photo-1522771753033-748a2d32395c?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-5')">
+                <div class="form-row-counters">
+                    <div class="form-group counter-group">
+                        <label>Количество номеров:</label>
+                        <select name="rooms_count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                    <div class="form-group counter-group">
+                        <label>Взрослых:</label>
+                        <select name="adults"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-info">
-                <h2>Стандартный номер</h2>
-                <p class="modal-desc">Уютный однокомнатный номер в классическом стиле с большой двуспальной кроватью. В номере есть кондиционер, телевизор, холодильник и бесплатный Wi-Fi. Ванная комната укомплектована всеми необходимыми принадлежностями.</p>
-                <div class="modal-bottom">
-                    <div class="modal-price">4 700 ₽ <span>/ сутки</span></div>
-                    <a href="#" class="btn-reserve-room">ЗАБРОНИРОВАТЬ</a>
+                <div class="form-group">
+                    <label for="message">Текстовое сообщение / Пожелания</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Напишите ваши пожелания..."></textarea>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Окно 2: Премиум -->
-<div id="modal-6" class="modal-overlay" onclick="closeModalOutside(event)">
-    <div class="modal-window">
-        <span class="modal-close" onclick="closeModal('modal-6')">×</span>
-        <div class="modal-content">
-            <div class="modal-gallery">
-                <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800&auto=format&fit=crop" class="modal-main-img" alt="Фото номера">
-                <div class="modal-thumbs">
-                    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-6')">
-                    <img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-6')">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89dae6c2c4d?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-6')">
+                <div class="form-submit-row">
+                    <button type="submit" class="btn-submit-form">ОТПРАВИТЬ ЗАЯВКУ</button>
                 </div>
-            </div>
-            <div class="modal-info">
-                <h2>Премиум номер</h2>
-                <p class="modal-desc">Комфортный номер с двумя раздельными либо одной большой кроватью. Просторное помещение идеально подходит для деловых встреч или группового заезда. Панорамные окна и улучшенная шумоизоляция.</p>
-                <div class="modal-bottom">
-                    <div class="modal-price">5 700 ₽ <span>/ сутки</span></div>
-                    <a href="#" class="btn-reserve-room">ЗАБРОНИРОВАТЬ</a>
-                </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>
 
-<!-- Окно 3: Люкс -->
-<div id="modal-6" class="modal-overlay" onclick="closeModalOutside(event)">
-    <div class="modal-window">
-        <span class="modal-close" onclick="closeModal('modal-7')">×</span>
-        <div class="modal-content">
-            <div class="modal-gallery">
-                <img src="https://images.unsplash.com/photo-1582719478250-c89dae6c2c4d?q=80&w=800&auto=format&fit=crop" class="modal-main-img" alt="Фото номера">
-                <div class="modal-thumbs">
-                    <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-7')">
-                    <img src="https://images.unsplash.com/photo-1522771753033-748a2d32395c?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-7')">
-                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-7')">
+<div id="modal-book-5" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window modal-form-window">
+        <span class="modal-close" onclick="closeModal('modal-book-5')">×</span>
+        <div class="modal-form-content">
+            <h2 class="modal-form-title">Бронирование: Студия</h2>
+            <form action="#" method="POST" class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fio">ФИО <span class="required">*</span></label>
+                        <input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (900) 000-00-00" required>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-info">
-                <h2>Номер Люкс</h2>
-                <p class="modal-desc">Максимальный комфорт для самых взыскательных гостей. Номер состоит из спальни и гостиной зоны. В номере: премиальная косметика, халаты, тапочки, мини-бар и кофемашина.</p>
-                <div class="modal-bottom">
-                    <div class="modal-price">9 500 ₽ <span>/ сутки</span></div>
-                    <a href="#" class="btn-reserve-room">ЗАБРОНИРОВАТЬ</a>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.ru">
                 </div>
-            </div>
+                <div class="form-row-dates">
+                    <div class="form-group date-group">
+                        <label>Дата заезда:</label>
+                        <input type="date" name="checkin" required>
+                    </div>
+                    <div class="form-group date-group">
+                        <label>Дата выезда:</label>
+                        <input type="date" name="checkout" required>
+                    </div>
+                </div>
+                <div class="form-row-counters">
+                    <div class="form-group counter-group">
+                        <label>Количество номеров:</label>
+                        <select name="rooms_count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                    <div class="form-group counter-group">
+                        <label>Взрослых:</label>
+                        <select name="adults"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Текстовое сообщение / Пожелания</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Напишите ваши пожелания..."></textarea>
+                </div>
+                <div class="form-submit-row">
+                    <button type="submit" class="btn-submit-form">ОТПРАВИТЬ ЗАЯВКУ</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 
-<!-- Окно 4: Студия -->
-<div id="modal-8" class="modal-overlay" onclick="closeModalOutside(event)">
-    <div class="modal-window">
-        <span class="modal-close" onclick="closeModal('modal-8')">×</span>
-        <div class="modal-content">
-            <div class="modal-gallery">
-                <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=800&auto=format&fit=crop" class="modal-main-img" alt="Фото номера">
-                <div class="modal-thumbs">
-                    <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-8')">
-                    <img src="https://images.unsplash.com/photo-1582719478250-c89dae6c2c4d?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-8')">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=200&auto=format&fit=crop" onclick="changeModalImg(this, 'modal-8')">
+<div id="modal-book-6" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window modal-form-window">
+        <span class="modal-close" onclick="closeModal('modal-book-6')">×</span>
+        <div class="modal-form-content">
+            <h2 class="modal-form-title">Бронирование: Cвадебный номер. Cтудия</h2>
+            <form action="#" method="POST" class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fio">ФИО <span class="required">*</span></label>
+                        <input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (900) 000-00-00" required>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-info">
-                <h2>Номер Студия</h2>
-                <p class="modal-desc">Современный дизайн с открытой планировкой. Спальня объединена с мини-гостиной. Отлично подходит для молодежных пар и командировок. Есть рабочая зона.</p>
-                <div class="modal-bottom">
-                    <div class="modal-price">3 900 ₽ <span>/ сутки</span></div>
-                    <a href="#" class="btn-reserve-room">ЗАБРОНИРОВАТЬ</a>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.ru">
                 </div>
-            </div>
+                <div class="form-row-dates">
+                    <div class="form-group date-group">
+                        <label>Дата заезда:</label>
+                        <input type="date" name="checkin" required>
+                    </div>
+                    <div class="form-group date-group">
+                        <label>Дата выезда:</label>
+                        <input type="date" name="checkout" required>
+                    </div>
+                </div>
+                <div class="form-row-counters">
+                    <div class="form-group counter-group">
+                        <label>Количество номеров:</label>
+                        <select name="rooms_count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                    <div class="form-group counter-group">
+                        <label>Взрослых:</label>
+                        <select name="adults"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Текстовое сообщение / Пожелания</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Напишите ваши пожелания..."></textarea>
+                </div>
+                <div class="form-submit-row">
+                    <button type="submit" class="btn-submit-form">ОТПРАВИТЬ ЗАЯВКУ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="modal-book-7" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window modal-form-window">
+        <span class="modal-close" onclick="closeModal('modal-book-7')">×</span>
+        <div class="modal-form-content">
+            <h2 class="modal-form-title">Бронирование: Люкс</h2>
+            <form action="#" method="POST" class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fio">ФИО <span class="required">*</span></label>
+                        <input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (900) 000-00-00" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.ru">
+                </div>
+                <div class="form-row-dates">
+                    <div class="form-group date-group">
+                        <label>Дата заезда:</label>
+                        <input type="date" name="checkin" required>
+                    </div>
+                    <div class="form-group date-group">
+                        <label>Дата выезда:</label>
+                        <input type="date" name="checkout" required>
+                    </div>
+                </div>
+                <div class="form-row-counters">
+                    <div class="form-group counter-group">
+                        <label>Количество номеров:</label>
+                        <select name="rooms_count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                    <div class="form-group counter-group">
+                        <label>Взрослых:</label>
+                        <select name="adults"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Текстовое сообщение / Пожелания</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Напишите ваши пожелания..."></textarea>
+                </div>
+                <div class="form-submit-row">
+                    <button type="submit" class="btn-submit-form">ОТПРАВИТЬ ЗАЯВКУ</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="modal-book-8" class="modal-overlay" onclick="closeModalOutside(event)">
+    <div class="modal-window modal-form-window">
+        <span class="modal-close" onclick="closeModal('modal-book-8')">×</span>
+        <div class="modal-form-content">
+            <h2 class="modal-form-title">Бронирование: Люкс +</h2>
+            <form action="#" method="POST" class="booking-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fio">ФИО <span class="required">*</span></label>
+                        <input type="text" id="fio" name="fio" placeholder="Иванов Иван Иванович" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Телефон <span class="required">*</span></label>
+                        <input type="tel" id="phone" name="phone" placeholder="+7 (900) 000-00-00" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.ru">
+                </div>
+                <div class="form-row-dates">
+                    <div class="form-group date-group">
+                        <label>Дата заезда:</label>
+                        <input type="date" name="checkin" required>
+                    </div>
+                    <div class="form-group date-group">
+                        <label>Дата выезда:</label>
+                        <input type="date" name="checkout" required>
+                    </div>
+                </div>
+                <div class="form-row-counters">
+                    <div class="form-group counter-group">
+                        <label>Количество номеров:</label>
+                        <select name="rooms_count"><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                    <div class="form-group counter-group">
+                        <label>Взрослых:</label>
+                        <select name="adults"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option></select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="message">Текстовое сообщение / Пожелания</label>
+                    <textarea id="message" name="message" rows="3" placeholder="Напишите ваши пожелания..."></textarea>
+                </div>
+                <div class="form-submit-row">
+                    <button type="submit" class="btn-submit-form">ОТПРАВИТЬ ЗАЯВКУ</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
 <script>
-    // Функция открытия окна (добавляет класс active к оверлею)
+    // Функция открытия окна
     function openModal(modalId) {
-        document.getElementById(modalId).classList.add('active');
-        document.body.style.overflow = 'hidden'; // Блокирует прокрутку страницы за окном
+        var modal = document.getElementById(modalId);
+        if(modal) {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
     }
 
     // Функция закрытия окна
     function closeModal(modalId) {
-        document.getElementById(modalId).classList.remove('active');
-        document.body.style.overflow = 'auto';
+        var modal = document.getElementById(modalId);
+        if(modal) {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
     }
 
-    // Закрытие при клике на затемненную область (передается событие)
+    // Закрытие по клику на темный фон
     function closeModalOutside(event) {
         if (event.target === event.currentTarget) {
             event.target.classList.remove('active');
@@ -781,12 +1374,13 @@
         }
     }
 
-    // Смена главной картинки при клике на превьюшку
+    // Смена фото в галерее
     function changeModalImg(thumbElement, modalId) {
-        const modal = document.getElementById(modalId);
-        const mainImg = modal.querySelector('.modal-main-img');
-        // Берем src из превью и ставим в главную картинку
-        mainImg.src = thumbElement.src;
+        var modal = document.getElementById(modalId);
+        var mainImg = modal.querySelector('.modal-main-img');
+        if(mainImg && thumbElement) {
+            mainImg.src = thumbElement.src;
+        }
     }
 </script>
 
