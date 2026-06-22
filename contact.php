@@ -33,7 +33,7 @@
 
         .page-hero-overlay {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0; left: 0; width: 100%; height: auto;
             background-image: url(img/slider2.5.png);
             display: flex;
             padding-top: 140px;
@@ -46,6 +46,17 @@
             font-weight: 400;
             margin-bottom: 0px;
         }
+        .breadcrumbs {
+            font-size: 15px;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+        .breadcrumbs a { color: #fff; transition: var(--transition); }
+        .breadcrumbs a:hover { opacity: 0.7; }
+        .breadcrumbs span { color: var(--gold); }
+
 /* =========================================================
    СТИЛИ ДЛЯ СТРАНИЦЫ КОНТАКТЫ (contact.php)
    ========================================================= */
@@ -66,10 +77,11 @@
 }
 
 .contacts-info h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
+    font-weight: 600;
+    font-size: 25px;
     color: var(--dark-blue);
     margin-bottom: 30px;
+    margin-top: 10px;
 }
 
 .contact-item {
@@ -161,7 +173,7 @@
 
 /* Адаптивность */
 @media (max-width: 768px) {
-    .contacts-wrapper { padding: 20px; flex-direction: column; }
+    .contacts-wrapper { padding: 20px; flex-direction: column; margin-top: 15px;}
     .contacts-info h2 { font-size: 26px; }
     .ci-phone { font-size: 18px; }
     .contacts-map, .map-placeholder { min-height: 250px; }
@@ -175,7 +187,7 @@
         <div class="page-hero-overlay">
             <div class="container">
                 <div class="breadcrumbs">
-                    <a href="index.php">Главная</a> / <span style="color: black;">Контакты</span>
+                    <a href="index.php">Главная</a> / <span style="color: var(--dark-blue);">Контакты</span>
                 </div>
                 <h1 class="page-title">КОНТАКТЫ</h1>
             </div>

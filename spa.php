@@ -51,7 +51,7 @@ include 'includes/header.php';
 
     .page-hero-overlay {
         position: absolute;
-        top: 0; left: 0; width: 100%; height: 100%;
+        top: 0; left: 0; width: 100%; height: auto;
         background-image: url(img/slider2.5.png);
         display: flex;
         padding-top: 140px;
@@ -64,20 +64,29 @@ include 'includes/header.php';
         font-weight: 400;
         margin-bottom: 0px;
     }
-
+    .breadcrumbs {
+            font-size: 15px;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+        .breadcrumbs a { color: #fff; transition: var(--transition); }
+        .breadcrumbs a:hover { opacity: 0.7; }
+        .breadcrumbs span { color: var(--gold); }
     .spa-text-col {
         flex: 1 1 45%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         margin-bottom: 40px;
+        margin-top: 25px;
     }
 
     .spa-text-col h2 {
-        font-family: 'Playfair Display', serif;
-        font-size: 32px;
+        font-weight: 600;
+        font-size: 25px;
         color: var(--dark-blue);
-        margin-top: 4%;
         margin-bottom: 20px;
     }
 
@@ -372,10 +381,11 @@ include 'includes/header.php';
         .spa-intro { padding: 20px; flex-direction: column; }
         .spa-img-col { flex: 1 1 100%; }
         .spa-img-col img { height: 250px; }
-        .spa-text-col h2 { font-size: 26px; }
+        .spa-text-col h2 { font-size: 20px; }
         .spa-services-grid { grid-template-columns: 1fr; }
         .spa-serv-bottom { flex-direction: column; gap: 15px; }
         .spa-serv-btn { width: 100%; text-align: center; padding: 10px; }
+        .page-title { font-size: 32px; margin-bottom: 15px;}
     }
 </style>
 
@@ -385,7 +395,7 @@ include 'includes/header.php';
         <div class="page-hero-overlay">
             <div class="container">
                 <div class="breadcrumbs">
-                    <a href="index.php">Главная</a> / <span style="color: black;">Спа-салон</span>
+                    <a href="index.php">Главная</a> / <span style="color: var(--dark-blue);">Спа-салон</span>
                 </div>
                 <h1 class="page-title">СПА-САЛОН</h1>
             </div>

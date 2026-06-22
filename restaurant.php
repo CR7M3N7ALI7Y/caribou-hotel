@@ -33,7 +33,7 @@
 
         .page-hero-overlay {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0; left: 0; width: 100%; height: auto;
             background-image: url(img/slider2.5.png);
             display: flex;
             padding-top: 140px;
@@ -48,10 +48,11 @@
         }
 
         .breadcrumbs {
-            font-size: 13px;
+            font-size: 15px;
             letter-spacing: 1px;
             opacity: 0.8;
             margin-bottom: 10px;
+            margin-top: 20px;
         }
         .breadcrumbs a { color: #fff; transition: var(--transition); }
         .breadcrumbs a:hover { opacity: 0.7; }
@@ -71,8 +72,8 @@
 }
 
 .resto-text-col h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
+    font-weight: 600;
+    font-size: 25px;
     color: var(--dark-blue);
     margin-bottom: 20px;
 }
@@ -186,29 +187,13 @@
     margin: 0;
 }
 
-.btn-reservation-large {
-    display: inline-block;
-    background-color: var(--gold);
-    color: #fff;
-    padding: 16px 50px;
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-radius: 4px;
-    transition: var(--transition);
-}
-.btn-reservation-large:hover {
-    background-color: #fff;
-    color: var(--dark-blue);
-}
-
 /* Адаптивность */
 @media (max-width: 768px) {
     .restaurant-intro { padding: 20px; }
-    .resto-text-col h2 { font-size: 26px; }
+    .resto-text-col h2 { font-size: 20px; margin-top: 25px;}
     .menu-img { height: 180px; }
     .menu-grid { grid-template-columns: 1fr; }
+    .page-title { font-size: 32px; }
 }
     </style>
     <?php include 'includes/header.php'; ?>
@@ -218,7 +203,7 @@
         <div class="page-hero-overlay">
             <div class="container">
                 <div class="breadcrumbs">
-                    <a href="index.php">Главная</a> / <span style="color: black;">Ресторан</span>
+                    <a href="index.php">Главная</a> / <span style="color: var(--dark-blue);">Ресторан</span>
                 </div>
                 <h1 class="page-title">РЕСТОРАН</h1>
             </div>

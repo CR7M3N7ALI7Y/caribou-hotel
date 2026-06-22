@@ -1,10 +1,10 @@
 /* --- Сброс стилей --- */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 /* ВАЖНО: Убирает белую полосу справа на мобильных */
 html, body { 
     overflow-x: hidden; 
     width: 100%;
+    min-height: 100vh; /* Важно: позволяет странице расти вниз */
     font-family: 'Montserrat', sans-serif; 
     background-color: #f4f4f4; 
     color: #333; 
@@ -25,87 +25,13 @@ ul {
     list-style: none; 
 }
 
-/* --- HEADER --- */
-.site-header {
-    position: absolute;
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    z-index: 100;
-    padding: 15px 20px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0) 100%);
-}
-
-.header-container {
-    max-width: 1400px; margin: 0 auto;
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    flex-wrap: wrap;
-}
-
-.logo { 
-    color: #fff; 
-    font-family: 'Playfair Display', serif; 
-    font-size: 20px; 
-    letter-spacing: 2px; 
-    display: flex; 
-    align-items: center; 
-    gap: 10px; 
-    flex-shrink: 0; 
-}
-.logo-icon { 
-    font-size: 28px; 
-    font-weight: 300; 
-}
-.logo-text small { font-size: 10px; 
-    letter-spacing: 3px; 
-    opacity: 0.7; display: block; 
-    margin-top: -5px; 
-}
-
-.main-nav { 
-    display: flex; 
-    gap: 10px; 
-    flex-wrap: wrap; 
-    justify-content: center; 
-}
-.main-nav a { 
-    color: #fff; 
-    font-size: 15px; 
-    letter-spacing: 1px; 
-    text-transform: uppercase; 
-    opacity: 0.9; 
-    transition: var(--transition); 
-    white-space: nowrap; 
-}
-.main-nav a:hover { 
-    opacity: 1; 
-    color: rgb(177, 177, 177); 
-}
-
-.header-actions { 
-    display: flex; 
-    align-items: center; 
-    gap: 10px; flex-wrap: wrap; 
-    justify-content: flex-end; }
-.lang-switch { 
-    color: #fff; 
-    font-size: 12px; 
-    font-weight: 600; 
-    cursor: pointer; }
-.lang-switch .active { 
-    color: var(--gold); 
-}
-
-
 
 /* --- HERO СЛАЙДЕР --- */
 .hero-slider-wrapper { 
     position: relative; 
     height: 100vh; 
     width: 100%; 
-    overflow: hidden; 
+
 }
 .hero-slides { 
     position: relative; 
@@ -117,16 +43,6 @@ ul {
     position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     background-size: cover; background-position: center center; 
     will-change: transform, opacity; z-index: 1;
-}
-
-.slide-1 { 
-    animation: fadeSlide 9s infinite; 
-}
-.slide-2 { 
-    animation: fadeSlide 9s infinite 3s; 
-}
-.slide-3 { 
-    animation: fadeSlide 9s infinite 6s; 
 }
 
 @keyframes fadeSlide {
@@ -180,7 +96,7 @@ ul {
 
 /* --- FEATURES GRID --- */
 .features-grid { display: grid; grid-template-columns: repeat(4, 1fr); height: 400px; width: 100%; }
-.feature-item { position: relative; background-size: cover; background-position: center; cursor: pointer; overflow: hidden; }
+.feature-item { position: relative; background-size: cover; background-position: center; cursor: pointer; overflow-x: hidden; }
 .feature-item .overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.4); display: flex; flex-direction: column; justify-content: center; align-items: center; color: #fff; text-align: center; padding: 20px; transition: var(--transition); }
 .feature-item:hover .overlay { background: rgba(0, 0, 0, 0.7); }
 .feature-item h3 { font-size: 22px; letter-spacing: 3px; font-weight: 600; margin-bottom: 20px; }
@@ -203,7 +119,7 @@ ul {
 .footer-links a:hover { color: var(--dark-blue); }
 .copyright { font-size: 12px; color: #aaa; }
 
-.footer-image { width: 60%; height: 400px; overflow: hidden; clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%); }
+.footer-image { width: 60%; height: 400px; overflow-x: hidden; clip-path: polygon(10% 0, 100% 0, 100% 100%, 0% 100%); }
 .footer-image img { width: 100%; height: 100%; object-fit: cover; will-change: transform; }
 
 
@@ -247,7 +163,7 @@ ul {
 @media (max-width: 400px) {
     .site-header { padding: 10px; }
     .main-nav a { font-size: 9px; gap: 4px; }
-    .logo { font-size: 16px; }
+    .logo { font-size: 16px; width: 10px;}
     .logo-text small { font-size: 8px; }
     .logo-icon { font-size: 22px; }
     .btn-reservation { font-size: 10px; padding: 6px 12px; }

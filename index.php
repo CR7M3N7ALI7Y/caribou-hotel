@@ -1,13 +1,20 @@
 <?php include 'includes/header.php'; ?>
-
+<style>
+/* ВАЖНО: Убирает белую полосу справа на мобильных */
+html, body { 
+        overflow-x: hidden; 
+    width: 100%;
+    min-height: 100vh; /* Важно: позволяет странице расти вниз */
+    font-family: 'Montserrat', sans-serif; 
+    background-color: #f4f4f4; 
+    color: #333; 
+}
+</style>
 <main>
     <!-- 1. HERO СЕКЦИЯ СО СЛАЙДЕРОМ (Анимация на CSS) -->
     <section class="hero-slider-wrapper">
         <div class="hero-slides">
-            <!-- Замените ссылки на свои локальные картинки. Сейчас стоят быстрые плейсхолдеры. -->
-            <div class="slide slide-1" style="background-image: url('img/slider1.png');"></div>
             <div class="slide slide-2" style="background-image: url('img/slider2.png');"></div>
-            <div class="slide slide-3" style="background-image: url('img/slider3.jpg');"></div>
         </div>
 
         <div class="hero-content">

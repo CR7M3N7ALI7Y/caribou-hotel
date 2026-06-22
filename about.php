@@ -11,11 +11,14 @@
         /* =========================================================
         НОВЫЕ СТИЛИ ДЛЯ ВНУТРЕННИХ СТРАНИЦ
         ========================================================= */
-
+        body {
+            overflow: hidden;
+        }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            
         }
 
         /* Заголовок страницы */
@@ -33,7 +36,7 @@
 
         .page-hero-overlay {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0; left: 0; width: 100%; height: auto;
             background-image: url(img/slider2.5.png);
             display: flex;
             padding-top: 140px;
@@ -48,10 +51,11 @@
         }
 
         .breadcrumbs {
-            font-size: 13px;
+            font-size: 15px;
             letter-spacing: 1px;
             opacity: 0.8;
             margin-bottom: 10px;
+            margin-top: 20px;
         }
         .breadcrumbs a { color: #fff; transition: var(--transition); }
         .breadcrumbs a:hover { opacity: 0.7; }
@@ -71,7 +75,7 @@
         }
 
         .text-content h2 {
-            font-size: 28px;
+            font-size: 25px;
             color: var(--dark-blue);
             margin-bottom: 20px;
             font-weight: 600;
@@ -130,7 +134,7 @@
             .page-hero { height: 250px; }
             .page-title { font-size: 32px; }
             .content-block { padding: 30px; }
-            .text-content h2 { font-size: 24px; }
+            .text-content h2 { font-size: 20px; }
         }
 
         /* СПЕЦИАЛЬНО ДЛЯ 320px (КАК НА ВАШЕМ СКРИНШОТЕ) */
@@ -165,7 +169,7 @@
         <div class="page-hero-overlay">
             <div class="container">
                 <div class="breadcrumbs">
-                    <a href="index.php">Главная</a> / <span style="color: black;">Информация</span>
+                    <a href="index.php">Главная</a> / <span style="color: var(--dark-blue);">Информация</span>
                 </div>
                 <h1 class="page-title">ИНФОРМАЦИЯ</h1>
             </div>

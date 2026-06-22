@@ -30,7 +30,7 @@ include 'includes/header.php';
     ========================================================= */
     .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
     .page-hero { position: relative; height: 300px; background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; }
-    .page-hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url(img/slider2.5.png); display: flex; padding-top: 140px; }
+    .page-hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: auto; background-image: url(img/slider2.5.png); display: flex; padding-top: 140px; }
     .page-title { font-family: 'Playfair Display', serif; font-size: 48px; letter-spacing: 5px; font-weight: 400; margin-bottom: 0px; }
     .breadcrumbs { font-size: 13px; letter-spacing: 1px; opacity: 0.8; margin-bottom: 10px; }
     .breadcrumbs a { color: #fff; transition: var(--transition); }
@@ -45,18 +45,27 @@ include 'includes/header.php';
     .room-card-img img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
     .room-card:hover .room-card-img img { transform: scale(1.03); }
     .room-card-content { padding: 25px 30px 30px; display: flex; flex-direction: column; flex-grow: 1; }
-    .room-card-title { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--dark-blue); letter-spacing: 1px; margin-bottom: 10px; font-weight: 400; }
+    .room-card-title {font-size: 22px; color: var(--dark-blue); letter-spacing: 1px; margin-bottom: 10px; font-weight: 600; }
     .room-card-desc { font-size: 14px; line-height: 1.6; color: #666; margin-bottom: 20px; flex-grow: 1; }
     .room-card-bottom { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f0f0f0; padding-top: 20px; }
     .room-card-price { font-size: 18px; font-weight: 600; color: #333; }
     .room-card-price span { font-size: 14px; color: #999; font-weight: 400; }
     .btn-reserve-card { background-color: var(--gold); color: #fff; padding: 10px 25px; font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; border-radius: 4px; transition: var(--transition); }
     .btn-reserve-card:hover { background-color: gray; color: #fff; }
-
+    .breadcrumbs {
+            font-size: 15px;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+        .breadcrumbs a { color: #fff; transition: var(--transition); }
+        .breadcrumbs a:hover { opacity: 0.7; }
+        .breadcrumbs span { color: var(--gold); }
     /* Модальные окна */
     .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.75); z-index: 9999; justify-content: center; align-items: center; padding: 20px; }
     .modal-overlay.active { display: flex; animation: fadeInModal 0.25s ease-out forwards; }
-    .modal-window { background: #fff; max-width: 900px; width: 100%; max-height: 90vh; border-radius: 8px; box-shadow: 0 15px 50px rgba(0,0,0,0.4); position: relative; overflow: hidden; display: flex; flex-direction: column; animation: slideUpModal 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards; }
+    .modal-window { background: #fff; max-width: 900px; width: 100%; max-height: 90vh; border-radius: 8px; box-shadow: 0 15px 50px rgba(0,0,0,0.4); position: relative; overflow-x: hidden; display: flex; flex-direction: column; animation: slideUpModal 0.3s cubic-bezier(0.2, 0.9, 0.3, 1.1) forwards; }
     .modal-close { position: absolute; top: 15px; right: 20px; font-size: 32px; font-weight: 300; color: #999; cursor: pointer; z-index: 10; transition: all 0.2s ease; line-height: 1; background: rgba(255,255,255,0.8); border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
     .modal-close:hover { color: #333; background: #fff; transform: rotate(90deg); }
     .modal-content { display: flex; flex-wrap: wrap; height: 100%; }
@@ -89,7 +98,7 @@ include 'includes/header.php';
     .btn-submit-form:hover { background-color: gray; transform: translateY(-2px); }
     @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
     @keyframes slideUpModal { from { opacity: 0; transform: translateY(30px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
-    @media (max-width: 768px) { .modal-content { flex-direction: column; } .modal-gallery { padding: 15px; } .modal-main-img { height: 180px; } .modal-thumbs img { height: 50px; } .modal-info { padding: 20px; } .modal-bottom { flex-direction: column; align-items: stretch; gap: 15px; } .btn-reserve-room { width: 100%; text-align: center; } }
+    @media (max-width: 768px) { .page-title { font-size: 32px; margin-bottom: 15px;} .modal-content { flex-direction: column; } .modal-gallery { padding: 15px; } .modal-main-img { height: 180px; } .modal-thumbs img { height: 50px; } .modal-info { padding: 20px; } .modal-bottom { flex-direction: column; align-items: stretch; gap: 15px; } .btn-reserve-room { width: 100%; text-align: center; } }
     @media (max-width: 768px) { .rooms-grid { grid-template-columns: 1fr; } .room-card-img { height: 220px; } .room-card-bottom { flex-direction: column; align-items: flex-start; gap: 15px; } .btn-reserve-card { width: 100%; text-align: center; padding: 12px; } }
 </style>
 
@@ -98,7 +107,7 @@ include 'includes/header.php';
         <div class="page-hero-overlay">
             <div class="container">
                 <div class="breadcrumbs">
-                    <a href="index.php">Главная</a> / <span style="color:black;">Номера</span>
+                    <a href="index.php">Главная</a> / <span style="color: var(--dark-blue);">Номера</span>
                 </div>
                 <h1 class="page-title">НОМЕРА</h1>
             </div>

@@ -11,7 +11,7 @@
         /* =========================================================
         НОВЫЕ СТИЛИ ДЛЯ ВНУТРЕННИХ СТРАНИЦ
         ========================================================= */
-
+        .logo {width: 100px;}
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -33,7 +33,7 @@
 
         .page-hero-overlay {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0; left: 0; width: 100%; height: auto;
             background-image: url(img/slider2.5.png);
             display: flex;
             padding-top: 140px;
@@ -48,7 +48,7 @@
         }
 
         .breadcrumbs {
-            font-size: 13px;
+            font-size: 15px;
             letter-spacing: 1px;
             opacity: 0.8;
             margin-bottom: 10px;
@@ -56,7 +56,6 @@
         .breadcrumbs a { color: #fff; transition: var(--transition); }
         .breadcrumbs a:hover { opacity: 0.7; }
         .breadcrumbs span { color: var(--gold); }
-
         /* =========================================================
    СТИЛИ ДЛЯ СТРАНИЦЫ КОНКУРСОВ (competitions.php)
    ========================================================= */
@@ -102,7 +101,7 @@
         }
 
         .tender-title {
-            font-size: 18px;
+            font-size: 25px;
             color: var(--dark-blue);
             margin-bottom: 10px;
             font-weight: 600;
@@ -184,7 +183,7 @@
         <div class="page-hero-overlay">
             <div class="container">
                 <div class="breadcrumbs">
-                    <a href="index.php">Главная</a> / <span style="color: black;">Конкурсы</span>
+                    <a href="index.php">Главная</a> / <span style="color: var(--dark-blue);">Конкурсы</span>
                 </div>
                 <h1 class="page-title">КОНКУРСЫ</h1>
             </div>

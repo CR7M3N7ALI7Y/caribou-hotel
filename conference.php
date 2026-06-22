@@ -29,11 +29,12 @@
             justify-content: center;
             text-align: center;
             color: #fff;
+            margin-bottom: 25px;
         }
 
         .page-hero-overlay {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0; left: 0; width: 100%; height: auto;
             background-image: url(img/slider2.5.png);
             display: flex;
             padding-top: 140px;
@@ -46,15 +47,24 @@
             font-weight: 400;
             margin-bottom: 0px;
         }
+        .breadcrumbs {
+            font-size: 15px;
+            letter-spacing: 1px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+            margin-top: 20px;
+        }
+        .breadcrumbs a { color: #fff; transition: var(--transition); }
+        .breadcrumbs a:hover { opacity: 0.7; }
+        .breadcrumbs span { color: var(--gold); }
 
         .conf-text-block {
-    flex: 1 1 50%;
-    margin-top: 4%;
-}
+            flex: 1 1 50%;
+        }
 
 .conf-text-block h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
+    font-weight: 600;
+    font-size: 25px;
     color: var(--dark-blue);
     margin-bottom: 20px;
 }
@@ -157,13 +167,15 @@
 /* Адаптивность */
 @media (max-width: 768px) {
     .conference-wrapper { padding: 20px; flex-direction: column; }
-    .conf-text-block h2 { font-size: 26px; }
+    .conf-text-block h2 { font-size: 20px; }
     .conf-image-block img { min-height: 200px; }
     .equipment-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 450px) {
     .equipment-grid { grid-template-columns: 1fr; }
+    .page-title { font-size: 22px; }
+    .conf-text-block { margin-top: 10% ;}
 }
     </style>
     <?php include 'includes/header.php'; ?>
@@ -173,7 +185,7 @@
         <div class="page-hero-overlay">
             <div class="container">
                 <div class="breadcrumbs">
-                    <a href="index.php">Главная</a> / <span style="color: black;">Конференц-зал</span>
+                    <a href="index.php">Главная</a> / <span style="color: var(--dark-blue);">Конференц-зал</span>
                 </div>
                 <h1 class="page-title">КОНФЕРЕНЦ-ЗАЛ</h1>
             </div>
