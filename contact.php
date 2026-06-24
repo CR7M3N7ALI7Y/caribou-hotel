@@ -246,7 +246,7 @@
                     <div class="contacts-map">
                         <div class="map-placeholder">
                             <!-- ЗАМЕНИТЕ ССЫЛКУ НИЖЕ НА ССЫЛКУ ВАШЕЙ ЯНДЕКС КАРТЫ -->
-                            <iframe src="https://yandex.ru/map-widget/v1/?um=constructor%3A7f2e4f6d8a2d8b2c8e4f6d8a2d8b2c8e&amp;source=constructor" width="100%" height="100%" frameborder="0"></iframe>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3532.7655213503535!2d66.66230691467543!3d63.72227649146867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x43823c7f1f3bf2ed%3A0x46ed8da90e8c8977!2z0JPQvtGB0YLQuNC90LjRhtCwINCa0LDRgNC40LHRgw!5e0!3m2!1sru!2sru!4v1782313613402!5m2!1sru!2sru" width="100%" height="100%" frameborder="0"></iframe>
                         </div>
                     </div>
 

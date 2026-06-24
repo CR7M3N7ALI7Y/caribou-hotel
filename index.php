@@ -14,7 +14,7 @@ html, body {
     <!-- 1. HERO СЕКЦИЯ СО СЛАЙДЕРОМ (Анимация на CSS) -->
     <section class="hero-slider-wrapper">
         <div class="hero-slides">
-            <div class="slide slide-2" style="background-image: url('img/slider2.png');"></div>
+            <div class="slide slide-2" style="background-image: url('img/slider2.jpg');"></div>
         </div>
 
         <div class="hero-content">

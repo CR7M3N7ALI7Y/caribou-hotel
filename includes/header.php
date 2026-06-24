@@ -141,7 +141,7 @@
                 <a href="restaurant.php">Ресторан</a> <span class="nav-slash">/</span>
                 <a href="spa.php">Спа-салон</a> <span class="nav-slash">/</span>
                 <a href="conference.php">Конференц-зал</a> <span class="nav-slash">/</span>
-                <a href="contact.php">Контакты</a> <span class="nav-slash">/</span>
+                <a href="contact.php">Контакты</a>
             </nav>
 
         </div>
